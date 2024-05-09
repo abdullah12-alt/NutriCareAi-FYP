@@ -1,0 +1,277 @@
+{% load static %}
+{%load mathfilters%}
+{%load humanize%}
+<!DOCTYPE html>
+<html lang="en">
+<!-- doccure/patient-dashboard.html  30 Nov 2019 04:12:16 GMT -->
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
+    <title>NutriCare</title>
+
+    <!-- Favicons -->
+    <link type="image/x-icon" href="{% static 'HealthStack-System/images/Normal/favicon.png' %}" rel="icon" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'HealthStack-System/css/Normal/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'HealthStack-System/css/Normal/nutritions.css' %}">
+
+    <!-- Fontawesome CSS -->
+    <link rel="stylesheet"
+        href="{% static 'HealthStack-System/plugins/Normal/fontawesome/css/fontawesome.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'HealthStack-System/plugins/Normal/fontawesome/css/all.min.css' %}" />
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="{% static 'HealthStack-System/css/Normal/style.css' %}" />
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="assets/js/html5shiv.min.js"></script>
+      <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <!-- Main Wrapper -->
+    <div class="main-wrapper">
+        <!-- Header -->
+        <header class="header">{% include 'patient_navbar.html' %}</header>
+        <!-- /Header -->
+
+        <!-- Breadcrumb -->
+        <div class="breadcrumb-bar">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+
+                    <div class="col-md-12 col-12">
+                        <nav aria-label="breadcrumb" class="page-breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a href="{% url 'patient-dashboard' %}">Home</a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    Patient Dashboard
+                                </li>
+                            </ol>
+                        </nav>
+                        <h2 class="breadcrumb-title">Patient
+                            Dashboard</h2>{% include 'message.html' %}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- /Breadcrumb -->
+
+        <!-- Page Content -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- Profile Sidebar -->
+                    <div class="col-md-5 col-lg-4 col-xl-3 theiaStickySidebar">
+                        <div>{% include 'patient-sidebar.html' %}</div>
+                    </div>
+                    <!-- / Profile Sidebar -->
+            
+                    <div class="col-md-7 col-lg-8 col-xl-9">
+                        <div class="card">
+                            <div class="card-body pt-0">
+                                <div class="container">
+
+                                    <div class="row justify-content-center mt-5">
+                                        <div class="col-md-8 text-center">
+                                            <!-- <img src="{% static 'assets/Nutrients_images/logo.png' %}" class=" img-responsive logo mb-5 mt-5" /> -->
+                                            <form method="post">
+                                                {%csrf_token%}
+                            
+                                                <div class="input-group input-group-lg mb-5">
+                                                    <input type="text" name="query" class="form-control inputstyle"
+                                                        placeholder="search for Nutrients in your food..." required>
+                                                    <button class="btn whoop" type="submit" id="button-addon2">Find Nutrients</button>
+                                                </div>
+                                            </form>
+                                            {%if api%}
+                                            {% if api == "Oops there is an error"%}
+                                            <div class="alert alert-warning"> Oh no! something went wrong.Please try again in sometime. </div>
+                                            {% endif %}
+                                            <h1> {{api.0.name}} has a total of <strong> {{api.0.calories}} Calories</strong>
+                                                {%if api.0.calories > 200 %}
+                                               
+                                                <img src=" {% static 'assets/Nutrients_images/shocked.png' %}" class="img-responsive" />
+                                                {%endif%}
+                                            </h1>
+                            
+                                            {%if api.0.sodium_mg > 600 %}
+                                            <div class="alert alert-danger d-flex align-items-center mt-3" role="alert">
+                                                <div>
+                                                    This food contains an high amount of sodium. High Sodium cuases Sever dehydration and water
+                                                    retention.
+                                                </div>
+                                            </div>
+                                            {%endif%}
+                                            {%if api.0.sugar_g > 200 %}
+                                            <div class="alert alert-danger d-flex align-items-center mt-3" role="alert">
+                                               
+                                                <div>
+                                                    This food contains an high amount of sodium. High Sodium cuases Sever dehydration and water
+                                                    retention.
+                                                </div>
+                                            </div>
+                                            {%endif%}
+                                        </div>
+                                        <div class="row justify-content-center mt-5 mb-5 ">
+                                            <div class="col-md-10 caloriescont shadow rounded">
+                                                <div class="row">
+                                                    <!-- <div class="nutritional-values-container" style="height: 400px; overflow-y: auto;"> -->
+
+                                                    <div class="col-md-6">
+                                                        <h2 class="mt-3 mb-4">Nutritional Values </h2><span></span>
+                                                        <ul>
+                                                            <li class="servingsize">Serving Size per {{api.0.serving_size_g}}/Grams <span class="float-end"></span></li>
+                                                            <li>Carbohydrates: <span class="float-end">{{api.0.carbohydrates_total_g}}</span>
+                                                            </li>
+                                                            <li>Cholesterol: <span class="float-end">{{api.0.cholesterol_mg}}</span></li>
+                                                            <li>Saturated fat: <span class="float-end">{{api.0.fat_saturated_g}}</span></li>
+                                                            <li>Total Fat: <span class="float-end">{{api.0.fat_total_g}}</span></li>
+                                                            <li>Fiber Content: <span class="float-end">{{api.0.fiber_g}}</span></li>
+                                                            <li>Potassium <span class="float-end">{{api.0.potassium_mg}}</span></li>
+                                                            <li>Protein: <span class="float-end">{{api.0.protein_g}}<span></li>
+                                                            <li>Sodium:<span class="float-end">{{api.0.sodium_mg}}</span></li>
+                                                            <li>Sugar: <span class="float-end">{{api.0.sugar_g}}</span></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-md-6 mb-5">
+                                                        <h4 class="mt-3 mb-4">To burn {{api.0.calories}} calories you will have to</h4>
+                                                        <div class="d-flex align-items-center mb-5">
+                                                            <div class="flex-shrink-0">
+                                                                <img src=" {% static 'assets/Nutrients_images/running.png' %}" alt="...">
+                                                            </div>
+                                                            <div class="flex-grow-1 ms-3">
+                                                                <h5> Jog </h5>
+                                                                <p>you will have to jog for <strong>
+                                                                    {{api.0.calories | div:378|mul:60|floatformat:0}}</strong> Minutes</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="d-flex align-items-center mb-5">
+                                                            <div class="flex-shrink-0">
+                                                                
+                                                                <img src="{% static 'assets/Nutrients_images/yoga.png' %}" alt="...">
+                                                            </div>
+                                                            <div class="flex-grow-1 ms-4">
+                                                                <h5> Do Power Yoga </h5>
+                                                                <p>you will have to Power Yoga for <strong>
+                                                                    {{api.0.calories | div:223|mul:60|floatformat:0}}  </strong> Minutes</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="d-flex align-items-center mb-5">
+                                                            <div class="flex-shrink-0">
+                                                               
+                                                                <img src=" {% static 'assets/Nutrients_images/weightlifter.png' %}" alt="...">
+                                                            </div>
+                                                            <div class="flex-grow-1 ms-4">
+                                                                <h5>Get a Gym Workout </h5>
+                                                                <p>you will have to lift weight for <strong>
+                                                                    {{api.0.calories | div:483|mul:60|floatformat:0}} </strong> Minutes </p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="flex-shrink-0">
+                                                               
+                                                                <img src=" {% static 'assets/Nutrients_images/walking.png' %}" alt="...">
+                                                            </div>
+                                                            <div class="flex-grow-1 ms-1">
+                                                                <h5> Go for a Brisk Walk </h5>
+                                                                <p>you will have to brisk walk for <strong>
+                                                                    {{api.0.calories | div:294|mul:60|floatformat:0}}  </strong> Minutes</p>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                    <div >
+                                                        <canvas id="myChart"></canvas>
+                                                      </div>
+                                                </div>
+                                                
+                                            </div>
+                                            {%endif%}
+                                            
+        
+                                        </div>
+      
+           
+        </body>
+        
+<!-- doccure/patient-dashboard.html  30 Nov 2019 04:12:16 GMT -->
+
+<!-- jQuery -->
+<script src="{% static 'HealthStack-System/js/Normal/jquery.min.js' %}"></script>
+
+<!-- Bootstrap Core JS -->
+<script src="{% static 'HealthStack-System/js/Normal/popper.min.js' %}"></script>
+<script src="{% static 'HealthStack-System/js/Normal/bootstrap.min.js' %}"></script>
+
+<!-- Sticky Sidebar JS -->
+<script src="{% static 'HealthStack-System/plugins/Normal/theia-sticky-sidebar/ResizeSensor.js' %}"></script>
+<script src="{% static 'HealthStack-System/plugins/Normal/theia-sticky-sidebar/theia-sticky-sidebar.js' %}"></script>
+
+<!-- Chart.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js" integrity="sha512-sW/w8s4RWTdFFSduOTGtk4isV1+190E/GghVffMA9XczdJ2MDzSzLEubKAs5h0wzgSJOQTRYyaz73L3d6RtJSg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<!-- Custom JS -->
+<script src="{% static 'HealthStack-System/Outside_assets/js/script.js' %}"></script>
+
+<!-- Searchbar JS -->
+<script src="{% static 'HealthStack-System/js/Normal/sidebar.js' %}"></script>
+
+<!-- Chart.js Initialization -->
+<script>
+    const ctx = document.getElementById('myChart').getContext('2d');
+    const myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Carbohydrates', 'Cholesterol', 'Saturated fat', 'Total Fat', 'Fiber Content', 'Potassium', 'Protein','Sodium','Sugar'],
+            datasets: [{
+                label: 'Nutritional values of {{ api.0.name | capfirst }}',
+                data: [
+                    {{ api.0.carbohydrates_total_g }},
+                    {{ api.0.cholesterol_mg }},
+                    {{ api.0.fat_saturated_g }},
+                    {{ api.0.fat_saturated_g }},
+                    {{ api.0.fat_total_g }},
+                    {{ api.0.potassium_mg }},
+                    {{ api.0.protein_g }},
+                    {{ api.0.sodium_mg }},
+                    {{ api.0.sugar_g }},
+                ],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+</html>
