@@ -47,7 +47,7 @@
       </li>
       
       <li>
-        <a href="{% url 'Ally_chat'  %}">Chat with Patients</a>
+        <a href="{% url 'chat-home' pk=user.id %}">Chat with Patients</a>
       </li>
     
       <li class="login-link">
@@ -57,13 +57,7 @@
   </div>
   <ul class="nav header-navbar-rht">
     <li class="nav-item contact-item">
-      <div class="header-contact-img">
-        <i class="far fa-hospital"></i>
-      </div>
-      <div class="header-contact-detail">
-        <p class="contact-header">Contact</p>
-        <p class="contact-info-header">+88{{doctor.phone_number}}</p>
-      </div>
+      
     </li>
     <!-- User Menu -->
     <li class="nav-item dropdown has-arrow logged-item">

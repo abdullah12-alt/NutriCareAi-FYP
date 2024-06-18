@@ -240,3 +240,5 @@ def decrease_cart(request, pk):
         messages.error(request, 'Not Authorized')
         return render(request, 'patient-login.html') 
 # Create your views here.
+
+

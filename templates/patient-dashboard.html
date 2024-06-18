@@ -196,18 +196,19 @@
                                     {% endif %}
                                   </td>
                                   <td class="text-center">
-                                    {% if appointment.payment_status == 'pending' %}
+                                    {% comment %} {% if appointment.payment_status == 'pending' %}
                                     <span class="badge badge-pill bg-warning-light">Pending</span>
                                     {% endif %}
                                     {% if appointment.payment_status == 'VALID' %}
                                     <span class="badge badge-pill bg-success-light">Paid</span>
-                                    {% endif %}
+                                    {% endif %} {% endcomment %}
+                                    <span class="badge badge-pill bg-success-light">{{payment_status}}</span>
                                   </td>
 
                                   <td >
                                     <div class="table-action">
                                       <a
-                                        href="{% url 'ssl-payment-request' pk=appointment.patient.patient_id id=appointment.id %}"
+                                        href="https://buy.stripe.com/test_bIY5mV76q9zJeHu7sv"
                                         class="btn btn-sm bg-success-light"
                                       >
                                         <i class="fas fa-dollar-sign"></i> Pay
@@ -365,7 +366,7 @@
                     </div>
                     <!-- /Medical Records Tab -->
 
-                    <!-- Billing Tab -->
+                    {% comment %} <!-- Billing Tab -->
                     <div id="pat_billing" class="tab-pane fade">
                       <div class="card card-table mb-0">
                         <div class="card-body">
@@ -429,7 +430,7 @@
                         </div>
                       </div>
                     </div>
-                    <!-- /Billing Tab -->
+                    <!-- /Billing Tab --> {% endcomment %}
                   </div>
                   <!-- Tab Content -->
                 </div>

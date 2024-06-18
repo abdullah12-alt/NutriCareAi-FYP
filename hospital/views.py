@@ -204,22 +204,59 @@ def patient_register(request):
     context = {'page': page, 'form': form}
     return render(request, 'patient-register.html', context)
 
+# @csrf_exempt
+# @login_required(login_url="login")
+# @cache_control(no_cache=True, must_revalidate=True, no_store=True)
+# def patient_dashboard(request):
+#     if request.user.is_patient:
+#         # patient = Patient.objects.get(user_id=pk)
+#         patient = Patient.objects.get(user=request.user)
+#         report = Report.objects.filter(patient=patient)
+#         prescription = Prescription.objects.filter(patient=patient).order_by('-prescription_id')
+#         appointments = Appointment.objects.filter(patient=patient).filter(Q(appointment_status='pending') | Q(appointment_status='confirmed'))
+#         # payments = Payment.objects.filter(patient=patient).filter(appointment__in=appointments).filter(payment_type='appointment').filter(status='VALID')
+#         payment = Appointment.payment_status
+#         print(payment)
+#         context = {'patient': patient, 'appointments': appointments, "payment":payment,'report':report,'prescription':prescription}
+#     else:
+#         return redirect('logout')
+        
+#     return render(request, 'patient-dashboard.html', context)
+
 @csrf_exempt
 @login_required(login_url="login")
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def patient_dashboard(request):
     if request.user.is_patient:
-        # patient = Patient.objects.get(user_id=pk)
+        # Fetch the patient object
         patient = Patient.objects.get(user=request.user)
+        
+        # Get payment status from query parameters
+        payment_status = request.GET.get('payment_status', None)
+        if payment_status == 'success':
+            # Update the payment status in the database
+            appointments = Appointment.objects.filter(patient=patient, appointment_status='pending')
+            for appointment in appointments:
+                appointment.payment_status = 'done'
+                appointment.save()
+        
+        # Fetch other related data
         report = Report.objects.filter(patient=patient)
         prescription = Prescription.objects.filter(patient=patient).order_by('-prescription_id')
         appointments = Appointment.objects.filter(patient=patient).filter(Q(appointment_status='pending') | Q(appointment_status='confirmed'))
-        payments = Payment.objects.filter(patient=patient).filter(appointment__in=appointments).filter(payment_type='appointment').filter(status='VALID')
-        context = {'patient': patient, 'appointments': appointments, 'payments': payments,'report':report,'prescription':prescription}
+        # payments = Payment.objects.filter(patient=patient).filter(appointment__in=appointments).filter(payment_type='appointment').filter(status='VALID')
+        payment_status = 'done' if payment_status == 'success' else 'pending'
+        
+        context = {
+            'patient': patient,
+            'appointments': appointments,
+            'payment_status': payment_status,
+            'report': report,
+            'prescription': prescription,
+        }
+        return render(request, 'patient-dashboard.html', context)
     else:
         return redirect('logout')
-        
-    return render(request, 'patient-dashboard.html', context)
 
 
 # def profile_settings(request):
@@ -749,7 +786,7 @@ def Nutrients(request):
         
         return render(request, 'nutritions.html', {'api': api, 'patient': patients})
     else:
-        return render(request, 'nutritions.html', {'query': 'you entered an invalid query', 'patients': patients})
+        return render(request, 'nutritions.html', {'query': 'you entered an invalid query', 'patient': patients})
     
 @csrf_exempt
 @login_required(login_url="login")
