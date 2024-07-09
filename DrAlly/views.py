@@ -4,7 +4,7 @@ from django.views.decorators.csrf import csrf_exempt
 import google.generativeai as genai
 
 # Configure the generative AI model
-genai.configure(api_key="AIzaSyCflJ6cBS7sq_niRIx08aXInmdlFxXeINc")
+genai.configure(api_key="AIzaSyAc4KcQ_0aOrnWF2cj-YqV6ofSCZxEmZlI")
 MODEL_NAME = "gemini-1.5-flash"
 generation_config = {
     "temperature": 1,
