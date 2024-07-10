@@ -29,10 +29,12 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = "xog(l@ij_3k*u-km*i!$qgii0gi=8mr4s8zo6y#0s2mpy93v$9"
+# SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env('DEBUG')
+DEBUG = True
+# DEBUG = env('DEBUG')
 
 # ALLOWED_HOSTS = ['192.168.0.100', '127.0.0.1','5749-103-109-53-5.in.ngrok.io']
 # ALLOWED_HOSTS = ['mobile view', 'local host','ngrok -- keeps on changing']
