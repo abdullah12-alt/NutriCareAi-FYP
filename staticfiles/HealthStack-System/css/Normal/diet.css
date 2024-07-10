@@ -1,0 +1,30 @@
+.diet-plan-box {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.diet-plan-box h5 {
+    color: #333;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.diet-plan-box ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.diet-plan-box ul li {
+    margin-bottom: 10px;
+}
+
+.card-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 20px;
+}
