@@ -29,9 +29,9 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = "xog(l@ij_3k*u-km*i!$qgii0gi=8mr4s8zo6y#0s2mpy93v$9"
+SECRET_KEY = "xog(l@ij_3k*u-km*i!$qgii0gi=8mr4s8zo6y#0s2mpy93v$9"
 # SECRET_KEY = env('SECRET_KEY')
-SECRET_KEY = os.getenv('SECRET_KEY', 'fallback-secret-key-if-not-set')
+# SECRET_KEY = os.getenv('SECRET_KEY', 'fallback-secret-key-if-not-set')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
