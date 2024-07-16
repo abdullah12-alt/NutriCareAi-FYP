@@ -39,7 +39,9 @@ DEBUG = True
 
 # ALLOWED_HOSTS = ['192.168.0.100', '127.0.0.1','5749-103-109-53-5.in.ngrok.io']
 # ALLOWED_HOSTS = ['mobile view', 'local host','ngrok -- keeps on changing']
-ALLOWED_HOSTS = ['*']
+# ALLOWED_HOSTS = ['*']
+
+ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app']
 # ALLOWED_HOSTS = ['.vercel.app', '127.0.0.1']
 
 # Application definition
