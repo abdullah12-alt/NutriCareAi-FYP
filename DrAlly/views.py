@@ -2,9 +2,9 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 import google.generativeai as genai
-# AIzaSyAc4KcQ_0aOrnWF2cj-YqV6ofSCZxEmZlI
+# previous :  AIzaSyAc4KcQ_0aOrnWF2cj-YqV6ofSCZxEmZlI
 # Configure the generative AI model
-genai.configure(api_key="AIzaSyAc4KcQ_0aOrnWF2cj-YqV6ofSCZxEmZlI")
+genai.configure(api_key="AIzaSyDlw1juQQ2mjuePMYfZkgKh9KHMzZDhCB8")
 MODEL_NAME = "gemini-1.5-flash"
 generation_config = {
     "temperature": 1,
