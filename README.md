@@ -1,12 +1,9 @@
-# HealthStack-System
-
-- An online platform that caters to multiple hospitals, enabling efficient tracking, monitoring, and sharing of patient health records between themselves. Patients can access information on various hospitals and doctors, book appointments online, purchase medicines from an online pharmacy, pay for laboratory tests via an integrated payment gateway, and even chat with their appointed doctors.
-- Software Engineering Project - B.Sc. in Computer Science and Engineering (CSE)
+# Nutricare-Ai
+NutriCare AI is a web application that provides nutrition-related services, connecting dietitians and patients to help achieve their fitness and health goals. This document will give an overview of the app's features, target audience, and functionality.
 
 ## Contributors
 
-- **Team Members:** [Mohammed Jawwadul Islam](https://www.linkedin.com/in/jawwadfida/), [Mohammad Fahad Al Rafi](https://www.linkedin.com/in/md-fahad-al-al-rafi-14b968111/), [Moumy Kabir](https://www.linkedin.com/in/pranto-podder-b78b97162/), [Pranto Podder](https://www.linkedin.com/in/aysha-siddika-577ba5224/), [Aysha Siddika](https://www.linkedin.com/in/moumy-kabir-156a0a232/), Nafisa Akhter
-- **Project Duration:** August 2022 - September 2022
+- **Team Members:** Abdullah Hassan
 
 ## Tools used:
       1) Programming Language and Libraries: Django (Python web framework), Bootstrap, JavaScript, Ajax, Django REST framework.
@@ -15,47 +12,71 @@
 
 ## Features
 
-- **Users:** Patient, Doctor, Hospital Admin, Lab Worker, Pharmacist
+### 1. Dietitian Registration and Online Consultation
 
-### Patient
-      1)  Search multiple Hospital → Department List → Search for Doctors
-      2)  Doctor Profile → Book Appointment
-      3)  Pay Appointment + Mail Confirmation 
-      4)  Search all Doctors in all hospitals
-      5)  Chat with appointed Doctor
-      6)  View Prescription, Download Prescription (PDF)
-      7)  Choose which tests to pay (Cart System, payment + mail confirmation)
-      8)  View Report, Download Report (PDF)
-      9)  Give Doctor Review
-      10) Search for Medicines in Medical Shop (Pharmacy)
-      11) Select which medicines to purchase (Cart system), pay total amount for medicines (payment + mail confirmation)
-      
-### Doctor 
-      1)  Doctor Profile Settings (Add More feature)
-      2)  Search multiple Hospital → Doctor register to hospital + upload certificate
-      3)  (Once registered by admin) accept or reject patients appointment (mail confirmation send to patient)
-      4)  Search patient profile → Create and view Prescription, view report
-      5)  Chat with appointed Patient
-      
-### Hospital Admin
-      1)  Admin Dashboard
-      2)  Accept or reject doctor registration (view doctor profile to see details)
-      3)  CRUD Hospitals (Add more)
-      4)  View Hospital List → CRUD Departments within hospital
-      5)  CRUD Lab Worker
-      6)  CRUD Pharmacist
+- **Registration:** Dietitians can register on the platform by providing detailed information such as academic records and verification documents (HEC and ACEND).
+- **Consultation:** Once approved by the admin, dietitians can offer online consultations through chat and video conferencing.
+- **Prescriptions and Tests:** Dietitians can provide prescriptions and perform necessary tests.
 
-### Lab worker
-      1)  Lab Worker Dashboard
-      2)  Create Report for patient.
-      3)  Create Tests for hospitals, View Tests
+### 2. Patient Registration and Interaction
 
-### Pharmacist
-      1)  Pharmacist Dashboard
-      2)  CRUD Medicines
-      3)  Search Medicine
+- **Registration:** Patients can register and log in to the platform.
+- **Booking:** Patients can view the list of available dietitians and book consultations based on their preferred time slots.
+- **Chat and Video Conferencing:** Patients can communicate with dietitians through chat and video calls.
 
+### 3. AI Dietitian "Dr. Ally"
 
+- **Virtual Assistance:** Dr. Ally is a virtual dietitian that provides free assistance to patients, helping them achieve their fitness goals and answering their queries.
+- **User Experience:** Dr. Ally is designed to be sweet and kind, enhancing user interaction.
+
+### 4. Diet Plans
+
+- **Premium Plans:** The platform offers premium diet plans designed by experienced dietitians.
+- **Personalization:** These plans cater to various dietary needs and health goals.
+
+### 5. Supplement Store
+
+- **Health Supplements:** Patients can buy health supplements and vitamins at affordable prices.
+- **Convenience:** The store aims to provide easy access to essential supplements.
+
+### 6. Nutrient Check
+
+- **Food Analysis:** Users can check the nutrient content in food based on a 100-gram quantity.
+- **Health Tracking:** This feature helps users keep track of their nutrient intake.
+
+### 7. Health Records Management
+
+- **Patient Records:** Patients can manage their health records and history on the platform.
+- **Data Security:** The platform ensures the security and privacy of patient data.
+
+### 8. Payment System
+
+- **Card Payment:** The platform offers a card payment system, currently in test mode.
+- **Future Availability:** Payments cannot be made at the moment, but this feature will be available soon.
+
+## How It Works
+
+### Dashboards
+
+### 1. Patient Dashboard
+
+- **User Interface:** Patients can easily navigate through the platform, view available dietitians, book consultations, and manage their health records.
+
+### 2. Doctor Dashboard
+
+- **Registration:** Dietitians register on the platform by providing detailed information.
+- **Approval Process:** The admin reviews the information and approves the registration.
+- **Consultation Management:** Dietitians can accept or reject patient consultation requests and define their consultation fees (currently fixed at 1000 rupees).
+- **Additional Features:** Various other features are available to enhance the dietitian's experience on the platform.
+
+### 3. Admin Dashboard
+
+- **Full Access:** The admin has complete access to the platform.
+- **Management:** The admin can manage doctor and patient profiles, approve or disapprove doctor requests, and oversee the overall functionality of the platform.
+
+## Conclusion
+
+NutriCare AI aims to provide a comprehensive solution for dietitians and patients, facilitating easy and effective nutrition-related services. By leveraging technology, the platform ensures a seamless connection between dietitians and patients, helping them achieve their health and fitness goals efficiently.
 ## APIs and PyPI packages used:
 
 #### [Django Rest Framework](https://www.django-rest-framework.org/#installation) - toolkit for building web APIs
@@ -90,77 +111,3 @@
       7) Start the application
             python manage.py runserver
             
-
-# MKDocs Documentation, Youtube Video and Presentation
-- [Youtube](https://youtu.be/TSR00OKBSCY) video link of MKDocs documentation on our Healthstack project.
-- [HeathStack Software - Presentation](https://github.com/Jawwad-Fida/HealthStack-System/files/13839586/HeathStack.Software.-.Presentation.pdf)
-- Checkout out the [MKdocs documentation](https://jawwad-fida.github.io/HealthStack-System/) to see screenshots of our project.
-
-# Some Screenshots
-
-## Home page
-
-<img src="https://user-images.githubusercontent.com/64092765/191188204-39dc320f-ec0f-4634-a8db-4735fd89cec9.png" width="50%">
-
-<img src="https://user-images.githubusercontent.com/64092765/191188212-a48d1616-42ec-4413-bb7f-cf0d6347b165.png" width="50%">
-
-<img src="https://user-images.githubusercontent.com/64092765/191188230-2a57e567-a879-487f-a907-8e6add15c8ca.png" width="50%">
-
-
-## Patient
-
-<img src="https://user-images.githubusercontent.com/64092765/191187372-0ea1bc75-aeee-4d2a-8624-27877d213753.png" width="50%">
-
-<img src="https://user-images.githubusercontent.com/64092765/191187384-46f21266-3550-42a9-b3c9-17b19e870608.png" width="50%">
-
-<img src="https://user-images.githubusercontent.com/64092765/191187390-b5dd8bbb-b7e6-4ba6-9423-71e93332e020.png" width="50%">
-
-<img src="https://user-images.githubusercontent.com/64092765/191187405-73b06afa-10ac-46b2-9138-8eb077401d5b.png" width="50%">
-
-<img src="https://user-images.githubusercontent.com/64092765/191187428-1445ca78-626d-4b00-8bc6-ce8639f2c303.png" width="50%">
-
-<img src="https://user-images.githubusercontent.com/64092765/191187437-e415ed6b-cddc-4862-b34c-6ce59a75c72d.png" width="50%">
-
-## Doctor
-
-<img src="https://user-images.githubusercontent.com/64092765/191187476-aae75261-0298-4d13-bc19-d2db8918c1f6.png" width="50%">
-
-<img src="https://user-images.githubusercontent.com/64092765/191187496-f1e0e7e4-ecd4-4c5d-8fdf-abc77a7d2031.png" width="50%">
-
-<img src="https://user-images.githubusercontent.com/64092765/191187508-d03649a8-00ba-4c4c-a4a5-8a17a6fa196f.png" width="50%">
-
-## Hospital Admin
-
-<img src="https://user-images.githubusercontent.com/64092765/191187604-4985a19c-c292-47a9-a21b-befd03500dae.png" width="50%">
-
-<img src="https://user-images.githubusercontent.com/64092765/191187692-05edf07b-a94f-4723-9e95-6b5c04cf03d8.png" width="50%">
-
-<img src="https://user-images.githubusercontent.com/64092765/191187722-820d572b-2a20-4fd1-bc5b-70af699c43b7.png" width="50%">
-
-## Pharmacist and Pharmacy
-
-<img src="https://user-images.githubusercontent.com/64092765/191187822-6468adf2-c3ca-470a-87e7-1360e5415435.png" width="50%">
-
-<img src="https://user-images.githubusercontent.com/64092765/191187869-24175b0d-38b2-41ff-9eb7-c793b8af0aa1.png" width="50%">
-
-<img src="https://user-images.githubusercontent.com/64092765/191187883-dfd52812-b521-467d-9094-d5ff75f36492.png" width="50%">
-
-<img src="https://user-images.githubusercontent.com/64092765/191187934-cfec116d-9a4d-420a-8270-6edab947ba95.png" width="50%">
-
-### Lab Worker
-
-<img src="https://user-images.githubusercontent.com/64092765/191188113-f9bb37ae-30a2-46b3-a871-e3ca5aa3df47.png" width="50%">
-
-<img src="https://user-images.githubusercontent.com/64092765/191188138-2dd284c8-a815-4060-87f3-61ffd7c2300d.png" width="50%">
-
-
-# [Champion in UIU CSE Project Show Summer 2022 - Software Engineering Laboratory](https://www.facebook.com/100080783675315/posts/pfbid0TuQyeVT9LHJx4zCnCpaDsAGFnCGxSTMKa8Fd1XCNcpf3n1yXf6ceQQTYQ1DeahSZl/)
-
-<img src="https://user-images.githubusercontent.com/64092765/192018455-de998881-ac7e-4082-a8c6-3a36a59aef94.jpg" width="75%">
-
-<img src="https://user-images.githubusercontent.com/64092765/191054866-189bb76f-3377-440a-84be-d07578a26c35.jpg" width="50%">
-
-
-
-
-
